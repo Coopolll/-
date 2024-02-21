@@ -57,8 +57,6 @@ int main()
 		nabiv_massivchika(a, N, 1'000'000'000);
 		Sortirovochka(a, N);
 		x = rand() % N;
-		cout << a[0] << " " << a[1] << " " << a[2] << " " << a[3] << " " << a[4] << " " << a[5] << endl;
-		cout << a[x];
 		auto begin = chrono::steady_clock::now();
 		for (unsigned cnt = 100000; cnt != 0; --cnt)
 		{
