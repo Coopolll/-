@@ -62,7 +62,7 @@ int main()
 		auto begin = chrono::steady_clock::now();
 		for (unsigned cnt = 100000; cnt != 0; --cnt)
 		{
-			func(a, N, a[x[0]]);
+			func(a, N, a[x]);
 		}
 		auto end = chrono::steady_clock::now();
 		auto time_span =
