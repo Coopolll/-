@@ -30,12 +30,6 @@ int main()
 	for (int i = 0; i < 10; ++i)
 	{
 		nabiv_massivchika(a, N, 1'000'000'000);
-		//for (unsigned i = 0; i < N; ++i)
-		//{
-		//	cout << a[i] << " ";
-		//}
-		//cout << endl;
-		//cout << a[x[0]];
 		nabiv_massivchika(x, 1, N);
 		auto begin = chrono::steady_clock::now();
 		for (unsigned cnt = 100000; cnt != 0; --cnt)
