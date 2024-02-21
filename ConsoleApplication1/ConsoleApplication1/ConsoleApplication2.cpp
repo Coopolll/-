@@ -4,7 +4,7 @@
 using namespace std;
 unsigned const N = 1'000'000;
 int a[N];
-int x[1];
+int x;
 int func(int a[], unsigned N, int x)
 {
 	bool flag = false;
@@ -56,9 +56,9 @@ int main()
 	{
 		nabiv_massivchika(a, N, 1'000'000'000);
 		Sortirovochka(a, N);
-		nabiv_massivchika(x, 1, N);
+		x = rand() % N;
 		cout << a[0] << " " << a[1] << " " << a[2] << " " << a[3] << " " << a[4] << " " << a[5] << endl;
-		cout << a[x[0]];
+		cout << a[x];
 		auto begin = chrono::steady_clock::now();
 		for (unsigned cnt = 100000; cnt != 0; --cnt)
 		{
