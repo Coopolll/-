@@ -2,16 +2,15 @@
 #include <chrono>
 #include <random>
 using namespace std;
-unsigned const N = 1'000'000;
+unsigned const N = 100'000;
 int a[N];
-int x;
 int func(int a[], unsigned N, int x)
 {
 	bool flag = false;
 	int l = 0;
-	int r = N-1;
+	int r = N - 1;
 	int m;
-	while ((l <= r) and (flag == false)) 
+	while ((l <= r) and (flag == false))
 	{
 		m = (l + r) / 2;
 		if (a[m] == x)
@@ -26,12 +25,16 @@ int func(int a[], unsigned N, int x)
 		{
 			l = m + 1;
 		}
+
 	}
 	return m;
 }
-void Sortirovochka(int a[], unsigned N) {
-	for (unsigned i = 0; i < N - 1; i++) {
-		for (unsigned j = 0; j < N - i - 1; j++) {
+void Sortirovochka(int a[], unsigned N)
+{
+	for (unsigned i = 0; i < N - 1; ++i)
+	{
+		for (unsigned j = 0; j < N - i - 1; ++j)
+		{
 			if (a[j] > a[j + 1]) {
 				int temp = a[j];
 				a[j] = a[j + 1];
@@ -54,9 +57,9 @@ int main()
 {
 	for (int i = 0; i < 10; ++i)
 	{
-		nabiv_massivchika(a, N, 1'000'000'000);
+		nabiv_massivchika(a, N, 1'000'000'000'000'000'000);
 		Sortirovochka(a, N);
-		x = rand() % N;
+		int x = rand() % N;
 		auto begin = chrono::steady_clock::now();
 		for (unsigned cnt = 100000; cnt != 0; --cnt)
 		{
@@ -65,6 +68,6 @@ int main()
 		auto end = chrono::steady_clock::now();
 		auto time_span =
 			chrono::duration_cast<chrono::milliseconds>(end - begin);
-		//cout << time_span.count() << " ";
+		cout << time_span.count() << " ";
 	}
 }
