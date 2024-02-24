@@ -2,14 +2,14 @@
 #include <chrono>
 #include <random>
 using namespace std;
-unsigned const N = 100'000;
+unsigned const N = 1'000'000;
 int a[N];
 int func(int a[], unsigned N, int x)
 {
 	bool flag = false;
 	int l = 0;
 	int r = N - 1;
-	int m;
+	int m=0;
 	while ((l <= r) and (flag == false))
 	{
 		m = (l + r) / 2;
@@ -57,17 +57,17 @@ int main()
 {
 	for (int i = 0; i < 10; ++i)
 	{
-		nabiv_massivchika(a, N, 1'000'000'000'000'000'000);
+		nabiv_massivchika(a, N, 1'000'000'000);
 		Sortirovochka(a, N);
-		int x = rand() % N;
 		auto begin = chrono::steady_clock::now();
-		for (unsigned cnt = 100000; cnt != 0; --cnt)
+		for (unsigned cnt = 100'000; cnt != 0; --cnt)
 		{
+			int x = (rand() * rand()) % N;
 			func(a, N, a[x]);
 		}
 		auto end = chrono::steady_clock::now();
 		auto time_span =
 			chrono::duration_cast<chrono::milliseconds>(end - begin);
-		cout << time_span.count() << " ";
+		cout << time_span.count() << "," << " ";
 	}
 }
