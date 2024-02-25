@@ -2,7 +2,7 @@
 #include <chrono>
 #include <random>
 using namespace std;
-unsigned const N = 10;
+unsigned const N = 300'000;
 int a[N];
 int func(int a[], unsigned N, int x)
 {
@@ -29,10 +29,10 @@ int main()
 	for (int i = 0; i < 10; ++i)
 	{
 		nabiv_massivchika(a, N, 1'000'000'000);
-		int x = rand() % N;
 		auto begin = chrono::steady_clock::now();
 		for (unsigned cnt = 100000; cnt != 0; --cnt)
 		{
+			int x = (rand()*rand())% N;
 			func(a, N, a[x]);
 		}
 		auto end = chrono::steady_clock::now();

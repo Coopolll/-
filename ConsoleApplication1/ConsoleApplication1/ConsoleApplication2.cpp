@@ -2,7 +2,7 @@
 #include <chrono>
 #include <random>
 using namespace std;
-unsigned const N = 1'000'000;
+unsigned const N = 700'000;
 int a[N];
 int func(int a[], unsigned N, int x)
 {
