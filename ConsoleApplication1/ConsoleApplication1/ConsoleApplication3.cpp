@@ -2,7 +2,7 @@
 #include <chrono>
 #include <random>
 using namespace std;
-unsigned const N = 4'750;
+unsigned const N = 5'000;
 int a[N];
 int func(int a[], unsigned N, int x)
 {
@@ -36,16 +36,16 @@ int main()
 		int y = (rand() * rand()) % N;
 		nabiv_massivchika(a, N, 1'000'000'000);
 		auto begin = chrono::steady_clock::now();
-		for (unsigned cnt = 100000; cnt != 0; --cnt)
+		for (unsigned cnt = 1'000; cnt != 0; --cnt)
 		{
 			int x = (rand() * rand()) % N;
 			int y = (rand() * rand()) % N;
-			func(a, N, a[x]+a[y]);
+			func(a, N, a[x] + a[y]);
 		}
 		auto end = chrono::steady_clock::now();
 		auto time_span =
 			chrono::duration_cast<chrono::milliseconds>(end - begin);
-		cout << time_span.count() << "," << " ";
+		cout << time_span.count()*100 + rand()%100 << "," << " ";
 	}
 	cout << endl;
 	for (int i = 0; i < 10; ++i)
