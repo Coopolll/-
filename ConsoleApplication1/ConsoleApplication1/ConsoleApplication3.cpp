@@ -16,6 +16,7 @@ int func(int a[], unsigned N, int x)
 			}
 		}
 	}
+	return -1;
 }
 void nabiv_massivchika(int a[], int N, int M)
 {
