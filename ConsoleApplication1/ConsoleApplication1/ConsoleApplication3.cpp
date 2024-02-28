@@ -36,7 +36,7 @@ int main()
 		int y = (rand() * rand()) % N;
 		nabiv_massivchika(a, N, 1'000'000'000);
 		auto begin = chrono::steady_clock::now();
-		for (unsigned cnt = 1'000; cnt != 0; --cnt)
+		for (unsigned cnt = 100'000; cnt != 0; --cnt)
 		{
 			int x = (rand() * rand()) % N;
 			int y = (rand() * rand()) % N;
@@ -45,7 +45,7 @@ int main()
 		auto end = chrono::steady_clock::now();
 		auto time_span =
 			chrono::duration_cast<chrono::milliseconds>(end - begin);
-		cout << time_span.count()*100 + rand()%100 << "," << " ";
+		cout << time_span.count() << "," << " ";
 	}
 	cout << endl;
 	for (int i = 0; i < 10; ++i)
