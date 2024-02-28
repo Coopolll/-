@@ -25,7 +25,6 @@ int func(int a[], unsigned N, int x)
 		{
 			l = m + 1;
 		}
-
 	}
 	return m;
 }
