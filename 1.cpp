@@ -63,6 +63,63 @@ void Vstavka(int a[], unsigned N)
 		}
 	}
 }
+void Bystraya(int a[], unsigned N, int start)
+{
+	int i = start;
+	int j = N - 1;
+	int m = N / 2;
+	int M = a[m];
+	while (i < j)
+	{
+		while (a[i] < M)
+		{
+			++i;
+		}
+		while (a[j] > M)
+		{
+			--j;
+		}
+		if (i < j)
+		{
+			int temp = a[j];
+			a[j] = a[i];
+			a[i] = temp;
+		}
+	}
+	if (j > 0)
+	{
+		Bystraya(a, j + 1, 0);
+	}
+	if (i < N)
+	{
+		Bystraya(a, N - i, i + 1);
+	}
+}
+void Sliyanie(int a[], unsigned N, int start)
+{
+	if (N != 1)
+	{
+		Sliyanie(a, N / 2, 0);
+		Sliyanie(a, N - N / 2, N / 2);
+		unsigned i = 0;
+		unsigned j = N / 2;
+		while (i < N / 2 and j < N)
+		{
+			if (a[j] < a[i])
+			{
+				int temp = a[j];
+				a[j] = a[i];
+				a[i] = temp;
+				++j;
+			}
+			else
+			{
+				++i;
+			}
+		}
+
+	}
+}
 int main()
 {
 	nabiv_massivchika(a, N, 1'000'000);
