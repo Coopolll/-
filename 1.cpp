@@ -63,36 +63,40 @@ void Vstavka(int a[], unsigned N)
 		}
 	}
 }
-void Bystraya(int a[], unsigned N, int start)
+void Bystraya(int a[], unsigned end, int start)
 {
-	int i = start;
-	int j = N - 1;
-	int m = N / 2;
-	int M = a[m];
-	while (i < j)
+	int N = end - start + 1;
+	if (N != 1)
 	{
-		while (a[i] < M)
+		int i = start;
+		int j = end;
+		int m = N / 2 + start;
+		int M = a[m];
+		while (i < j and (a[i] != M or a[j] != M))
 		{
-			++i;
+			while (a[i] < M)
+			{
+				++i;
+			}
+			while (a[j] > M)
+			{
+				--j;
+			}
+			if (i < j)
+			{
+				int temp = a[j];
+				a[j] = a[i];
+				a[i] = temp;
+			}
 		}
-		while (a[j] > M)
+		if (j > 0 and j != end - 1 and j != end)
 		{
-			--j;
+			Bystraya(a, j + 1, start);
 		}
-		if (i < j)
+		if (i < N - 1)
 		{
-			int temp = a[j];
-			a[j] = a[i];
-			a[i] = temp;
+			Bystraya(a, end, i);
 		}
-	}
-	if (j > 0)
-	{
-		Bystraya(a, j + 1, 0);
-	}
-	if (i < N)
-	{
-		Bystraya(a, N - i, i + 1);
 	}
 }
 void Sliyanie(int a[], unsigned N, int start)
@@ -123,7 +127,7 @@ void Sliyanie(int a[], unsigned N, int start)
 int main()
 {
 	nabiv_massivchika(a, N, 1'000'000);
-	Bystraya(a, N);
+	Bystraya(a, N - 1);
 	for (unsigned 1 = 0; i < N; ++i)
 	{
 		cout << i << " " << a[i] << " ";
