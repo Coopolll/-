@@ -2,6 +2,7 @@
 using namespace std;
 unsigned const N = 1'000;
 int a[N];
+int b[N];
 void nabiv_massivchika(int a[], int N, int M)
 {
 	unsigned seed = 1001;
@@ -99,29 +100,47 @@ void Bystraya(int a[], unsigned end, int start)
 		}
 	}
 }
-void Sliyanie(int a[], unsigned N, int start)
+void Sliyanie(int a[], unsigned end, unsigned start)
 {
+	unsigned N = end - start + 1;
 	if (N != 1)
 	{
-		Sliyanie(a, N / 2, 0);
-		Sliyanie(a, N - N / 2, N / 2);
-		unsigned i = 0;
-		unsigned j = N / 2;
-		while (i < N / 2 and j < N)
+		Sliyanie(a, N / 2 + start - 1, start);
+		Sliyanie(a, end, N / 2 + start);
+		unsigned i = start;
+		unsigned j = N / 2 + start;
+		unsigned k = start;
+		while (i < N / 2 + start and j <= end)
 		{
-			if (a[j] < a[i])
+			if (a[i] <= a[j] )
 			{
-				int temp = a[j];
-				a[j] = a[i];
-				a[i] = temp;
-				++j;
+				b[k] = a[i];
+				++i;
+				++k;
 			}
 			else
 			{
-				++i;
+				b[k] = a[j];
+				++j;
+				++k;
 			}
 		}
-
+		while (j <= end)
+		{
+			b[k] = a[j];
+			++j;
+			++k;
+		}
+		while (i < N / 2 + start)
+		{
+			b[k] = a[i];
+			++i;
+			++k;
+		}
+		for (int c = start; c <= end; ++c)
+		{
+			a[c] = b[c];
+		}
 	}
 }
 int main()
